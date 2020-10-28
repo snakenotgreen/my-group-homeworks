@@ -9,13 +9,12 @@ formats = 'Hello my name is ' "%s" ', I\'m ' "%s" ', and I\'m a ' "%s" % (name, 
 print(formats)
 about_me_fstring = f"Hello my name is {name}, I\'m {age}, and I\'m a {gender}"
 print(about_me_fstring)
-c = about_me_fstring.split(',')
 print(about_me_fstring)
-a = c[0]
-b = c[1]
-d = c[2]
+a = about_me_fstring.split(',')[0]
+b = about_me_fstring.split(',')[1]
+d = about_me_fstring.split(',')[2]
 print(a, b, d)
-list_from_str = c
+list_from_str = about_me_fstring.split(',')
 print(type(list_from_str))
 str_from_list = ' '.join(list_from_str)
 print(about_me_fstring.swapcase())
