@@ -9,7 +9,7 @@ formats = 'Hello my name is ' "%s" ', I\'m ' "%s" ', and I\'m a ' "%s" % (name, 
 print(formats)
 about_me_fstring = f"Hello my name is {name}, I\'m {age}, and I\'m a {gender}"
 print(about_me_fstring)
-c = about_me_fstring.split(' ')
+c = about_me_fstring.split(',')
 print(about_me_fstring)
 ints=[]
 ints = [x+''for x in string.ascii_letters]
