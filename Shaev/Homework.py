@@ -1,5 +1,4 @@
 import string
-import random
 print('Введите имя, возраст и пол поочерёдно: \n')
 name = input()
 age = input()
