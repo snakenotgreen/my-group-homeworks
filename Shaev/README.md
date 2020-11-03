@@ -16,21 +16,13 @@ sample_dict["class_a"]["student1"]["marks"].update({"physics": 74})
 sample_dict["class_b"]["student"]["marks"].update({"physics": 100})
 sample_dict["class_b"]["student1"]["marks"].update({"physics": 80})
 print(sample_dict)
-med_a_stud = round((sample_dict["class_a"]["student"]["marks"]["math"] +
-                    sample_dict["class_a"]["student"]["marks"]["history"] +
-                    sample_dict["class_a"]["student"]["marks"]["physics"]) / len(sample_dict["class_a"]["student"]["marks"]), 2)
-# средняя оценка ученика
-med_a_stud1 = round((sample_dict["class_a"]["student1"]["marks"]["math"] +
-                     sample_dict["class_a"]["student1"]["marks"]["history"] +
-                     sample_dict["class_a"]["student1"]["marks"]["physics"]) / len(sample_dict["class_a"]["student1"]["marks"]), 2)
+med_a_stud = med_a_stud = round((sum(list(sample_dict["class_a"]["student"]["marks"].values())) / len(sample_dict["class_a"]["student"]["marks"])), 2)
 
-med_b_stud = round((sample_dict["class_b"]["student"]["marks"]["math"] +
-                    sample_dict["class_b"]["student"]["marks"]["history"] +
-                    sample_dict["class_b"]["student"]["marks"]["physics"]) / len(sample_dict["class_b"]["student"]["marks"]), 2)
+med_a_stud1 = med_a_stud = round((sum(list(sample_dict["class_a"]["student1"]["marks"].values())) / len(sample_dict["class_a"]["student1"]["marks"])), 2)
 
-med_b_stud1 = round((sample_dict["class_b"]["student1"]["marks"]["math"] +
-                     sample_dict["class_b"]["student1"]["marks"]["history"] +
-                     sample_dict["class_b"]["student1"]["marks"]["physics"]) / len(sample_dict["class_b"]["student1"]["marks"]), 2)
+med_b_stud = med_a_stud = round((sum(list(sample_dict["class_b"]["student"]["marks"].values())) / len(sample_dict["class_b"]["student"]["marks"])), 2)
+
+med_b_stud1 = med_a_stud = round((sum(list(sample_dict["class_b"]["student1"]["marks"].values())) / len(sample_dict["class_b"]["student1"]["marks"])), 2)
 print('Лучшим студентом является:',
       max({med_a_stud: 'Misha',
           med_a_stud1: 'Max',
@@ -39,6 +31,6 @@ print('Лучшим студентом является:',
 medium_grades_a = round((med_a_stud + med_a_stud1)/len(sample_dict["class_a"]), 2)
 medium_grades_b = round((med_b_stud + med_b_stud1)/len(sample_dict["class_b"]), 2)
 medium_classes = {medium_grades_a: 'class_a', medium_grades_b: 'class_b'}
-medium_grades_classes = round(((medium_grades_a + medium_grades_b) / 2), 2)
+medium_grades_classes = round(((medium_grades_a + medium_grades_b) / len(sample_dict.keys())), 2)
 print('Средний балл классов:', medium_grades_classes)
 print('Лучшим классом является:', max(medium_classes.items()))
