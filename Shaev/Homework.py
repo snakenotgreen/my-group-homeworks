@@ -1,21 +1,34 @@
-import string
-import random
-print('Введите имя, возраст и пол поочерёдно: \n')
-name = input()
-age = input()
-gender = input()
-print('Hello my name is ' '{}' ', I\'m ' '{}' ', and I\'m a ' '{}'.format(name, age, gender))
-formats = 'Hello my name is ' "%s" ', I\'m ' "%s" ', and I\'m a ' "%s" % (name, age, gender)
-print(formats)
-about_me_fstring = f"Hello my name is {name}, I\'m {age}, and I\'m a {gender}"
-print(about_me_fstring)
-c = about_me_fstring.split(' ')
-print(about_me_fstring)
-ints=[]
-ints = [x+''for x in string.ascii_letters]
-for x, y in zip(ints, c):
-    globals()[x] = y
-list_from_str = c
-print(type(list_from_str))
-str_from_list = ' '.join(list_from_str)
-print(about_me_fstring.swapcase())
+# my-group-homeworks
+sample_dict = {"class_a": {"student": {"name": "misha",
+                                       "marks": {"math": 90, "history": 85}}}}
+print(sample_dict)
+print(sample_dict["class_a"]["student"]["name"])
+print(sample_dict["class_a"]["student"]["marks"]["history"])
+sample_dict["class_a"]["student1"] = {"name": "Max",
+                                      "marks": {"math": 80, "history": 100}}
+print(sample_dict)
+sample_dict.update({"class_b": {"student": {"name": "artem",
+                                            "marks": {"math": 20, "history": 50}},
+                                "student1": {"name": "Santa",
+                                             "marks": {"math": 40, "history": 86}}}})
+print(sample_dict)
+sample_dict["class_a"]["student"]["marks"].update({"physics": 39})
+sample_dict["class_a"]["student1"]["marks"].update({"physics": 74})
+sample_dict["class_b"]["student"]["marks"].update({"physics": 100})
+sample_dict["class_b"]["student1"]["marks"].update({"physics": 80})
+print(sample_dict)
+med_a_stud = round((sum(list(sample_dict["class_a"]["student"]["marks"].values())) / len(sample_dict["class_a"]["student"]["marks"])), 2)
+med_a_stud1 = round((sum(list(sample_dict["class_a"]["student1"]["marks"].values())) / len(sample_dict["class_a"]["student1"]["marks"])), 2)
+med_b_stud = round((sum(list(sample_dict["class_b"]["student"]["marks"].values())) / len(sample_dict["class_b"]["student"]["marks"])), 2)
+med_b_stud1 = round((sum(list(sample_dict["class_b"]["student1"]["marks"].values())) / len(sample_dict["class_b"]["student1"]["marks"])), 2)
+print('Лучшим студентом является:',
+      max({med_a_stud: 'Misha',
+          med_a_stud1: 'Max',
+          med_b_stud: 'Artem',
+          med_b_stud1: 'Santa'}.items()))
+medium_grades_a = round((med_a_stud + med_a_stud1)/len(sample_dict["class_a"]), 2)
+medium_grades_b = round((med_b_stud + med_b_stud1)/len(sample_dict["class_b"]), 2)
+medium_classes = {medium_grades_a: 'class_a', medium_grades_b: 'class_b'}
+medium_grades_classes = round(((medium_grades_a + medium_grades_b) / 2), 2)
+print('Средний балл классов:', medium_grades_classes)
+print('Лучшим классом является:', max(medium_classes.items()))
