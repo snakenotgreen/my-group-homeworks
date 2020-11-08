@@ -1,34 +1,20 @@
 # my-group-homeworks
-sample_dict = {"class_a": {"student": {"name": "misha",
-                                       "marks": {"math": 90, "history": 85}}}}
-print(sample_dict)
-print(sample_dict["class_a"]["student"]["name"])
-print(sample_dict["class_a"]["student"]["marks"]["history"])
-sample_dict["class_a"]["student1"] = {"name": "Max",
-                                      "marks": {"math": 80, "history": 100}}
-print(sample_dict)
-sample_dict.update({"class_b": {"student": {"name": "artem",
-                                            "marks": {"math": 20, "history": 50}},
-                                "student1": {"name": "Santa",
-                                             "marks": {"math": 40, "history": 86}}}})
-print(sample_dict)
-sample_dict["class_a"]["student"]["marks"].update({"physics": 39})
-sample_dict["class_a"]["student1"]["marks"].update({"physics": 74})
-sample_dict["class_b"]["student"]["marks"].update({"physics": 100})
-sample_dict["class_b"]["student1"]["marks"].update({"physics": 80})
-print(sample_dict)
-med_a_stud = round((sum(list(sample_dict["class_a"]["student"]["marks"].values())) / len(sample_dict["class_a"]["student"]["marks"])), 2)
-med_a_stud1 = round((sum(list(sample_dict["class_a"]["student1"]["marks"].values())) / len(sample_dict["class_a"]["student1"]["marks"])), 2)
-med_b_stud = round((sum(list(sample_dict["class_b"]["student"]["marks"].values())) / len(sample_dict["class_b"]["student"]["marks"])), 2)
-med_b_stud1 = round((sum(list(sample_dict["class_b"]["student1"]["marks"].values())) / len(sample_dict["class_b"]["student1"]["marks"])), 2)
-print('Лучшим студентом является:',
-      max({med_a_stud: 'Misha',
-          med_a_stud1: 'Max',
-          med_b_stud: 'Artem',
-          med_b_stud1: 'Santa'}.items()))
-medium_grades_a = round((med_a_stud + med_a_stud1)/len(sample_dict["class_a"]), 2)
-medium_grades_b = round((med_b_stud + med_b_stud1)/len(sample_dict["class_b"]), 2)
-medium_classes = {medium_grades_a: 'class_a', medium_grades_b: 'class_b'}
-medium_grades_classes = round(((medium_grades_a + medium_grades_b) / 2), 2)
-print('Средний балл классов:', medium_grades_classes)
-print('Лучшим классом является:', max(medium_classes.items()))
+with open('users.txt', 'r+', encoding='utf-8') as f:
+    word = input('Здравствуйте, вы проходили регистрацию на нашем ресурсе? [Да], [Нет]\n').lower()
+    if word == 'да':
+        login = input('Введите логин от вашего аккаунта')
+        password = input('Введите пароль от вашего аккаунта')
+        text = f.read()
+        if login in text and password in text:
+            print('Вход в аккаунт успешно осуществлён')
+        else:
+            print('Ошибка при входе')
+    elif word == 'нет':
+        word = input('Вы желаете зарегестрироваться на нашем портале? [Да], [Нет]\n').lower()
+        if word == 'да':
+            login = input('Введите желаемый логин вашего аккаунта')
+            password = input('Введите желаемый пароль вашего аккаунта')
+            print(login + '\n' + password, file=f)
+            print('Регистрация прошла успешно')
+        else:
+            print('Желаю вам хорошего дня')
