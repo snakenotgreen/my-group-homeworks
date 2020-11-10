@@ -15,9 +15,10 @@ with open('users.txt', 'r+', encoding='utf-8') as f:
     elif word == 'нет':
         word = input('Вы желаете зарегестрироваться на нашем портале? [Да], [Нет]\n').lower()
         if word == 'да':
-            login = input('Введите желаемый логин вашего аккаунта')
-            password = input('Введите желаемый пароль вашего аккаунта')
-            print(login + '\n' + password, file=f)
+            with open('users.txt', 'a+', encoding='utf-8') as f:
+                login = input('Введите желаемый логин вашего аккаунта')
+                password = input('Введите желаемый пароль вашего аккаунта')
+                f.writelines(login + ' ' + password + '\n')
             print('Регистрация прошла успешно')
         else:
             print('Желаю вам хорошего дня')
