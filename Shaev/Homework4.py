@@ -8,20 +8,18 @@ print(a)
 # Вторая задача
 x = 0
 while x < 5:
-    x+=1
+    x += 1
     love = input('Введите ваше любимое число')
-    if x <= 3:
-        if love.isdigit() == True:
-            print('good work')
-            break
-        else:
-            print('Будьте внимательнее и введите именно число')
-    elif 3 < x <= 5:
-        if love.isdigit() == True:
-            print('good work')
-            break
-        else:
-            print('Внимательнее будь!')
+    if x <= 3 and love.isdigit() == True:
+        print('good work')
+        break
+    elif x <= 3 and love.isdigit() != True:
+        print('Будьте внимательнее и введите именно число')
+    elif 3 < x <= 5 and love.isdigit() == True:
+        print('good work')
+        break
+    else:
+        print('Внимательнее будь!')
 else:
     print('Последний шанс ввести любимое число!')
     love = input('Введите ваше любимое число')
