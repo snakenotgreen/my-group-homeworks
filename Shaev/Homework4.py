@@ -5,6 +5,17 @@ for i in range(len(a)-1):
         if a[j] > a[j+1]:
             a[j], a[j+1] = a[j+1], a[j]
 print(a)
+# Первая задача альтернатива
+a = [50, 20, 14, 5, 30, 1, 10]
+x = 0
+while x < len(a):
+    j = 0
+    while j < len(a)-1:
+        if a[j] > a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]
+        j += 1
+    x += 1
+print(a)
 # Вторая задача
 x = 0
 while x < 5:
