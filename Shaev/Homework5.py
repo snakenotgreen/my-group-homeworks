@@ -1,27 +1,37 @@
 import string
-def cezar(x, y, z):
-    with open(x, 'r+', encoding='utf-8') as f:
-        text = f.read().lower().split()
+
+
+def cezar(codefile, key, newcodefile):
+    with open(codefile, 'r+', encoding='utf-8') as f:
+        text = f.read()
         for word in text:
             for letter in word:
-                loc = string.ascii_letters.find(letter)
-                new_letter = string.ascii_letters[loc + y]
-                with open(z, 'a+', encoding='utf-8') as f:
-                    f.write(new_letter.lower())
+                with open(newcodefile, 'a+', encoding='utf-8') as f1:
+                    if letter == chr(32) or letter.isdigit() or letter == ','\
+                            or letter == '.' or letter == '\'' or letter == '\n':
+                        f1.write(letter)
+                    else:
+                        loc = string.ascii_letters.find(letter)
+                        new_letter = string.ascii_letters[loc + key]
+                        f1.write(new_letter)
 
 
-def uncezar(x, y, z):
-    with open(x, 'r+', encoding='utf-8') as f:
-        a = f.read().lower().split()
+def uncezar(codefile, key, newcodefile):
+    with open(codefile, 'r+', encoding='utf-8') as f:
+        a = f.read()
         for word in a:
             for letter in word:
-                loc = string.ascii_lowercase.find(letter)
-                new_letter = string.ascii_letters[loc - y]
-                with open(z, 'a+', encoding='utf-8') as f:
-                    f.write(new_letter.lower())
+                with open(newcodefile, 'a+', encoding='utf-8') as f1:
+                    if letter == chr(32) or letter.isdigit() or letter == ','\
+                            or letter == '.' or letter == '\'' or letter == '\n':
+                        f1.write(letter)
+                    else:
+                        loc = string.ascii_letters.find(letter)
+                        new_letter = string.ascii_letters[loc - key]
+                        f1.write(new_letter)
 
 
-answer = input('Здравствуйте, вы желаете зашифровать или расшифровать файл? [code] [encode]')
+answer = input('Здравствуйте, вы желаете зашифровать или расшифровать файл? [code] [encode]').lower()
 try:
     if answer == 'code':
         cezar(input('Введите имя шифруемого файла [.txt]'),
