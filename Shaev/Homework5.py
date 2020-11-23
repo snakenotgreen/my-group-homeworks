@@ -21,9 +21,6 @@ def cezar(codefile, key, newcodefile):
                         f1.write(new_letter)
 
 
-cezar('users.txt', 2, 'ss.txt')
-
-
 def uncezar(codefile, key, newcodefile):
     with open(codefile, 'r+', encoding='utf-8') as f:
         a = f.read()
@@ -43,19 +40,25 @@ def uncezar(codefile, key, newcodefile):
                         f1.write(new_letter)
 
 
-answer = input('Здравствуйте, вы желаете зашифровать или расшифровать файл? [code] [encode]').lower()
-try:
-    if answer == 'code':
-        cezar(input('Введите имя шифруемого файла [.txt]'),
-              int(input('Введите ключ шифровки от 1 до 25')),
-              input('Введите имя файла с будущим шифром [.txt]'))
-    elif answer == 'encode':
-        uncezar(input('Введите имя зашифрованого файла [.txt]'),
-                int(input('Введите ключ шифровки от 1 до 25')),
-                input('Введите имя файла с будущей расшифровкой [.txt]'))
-except FileNotFoundError:
-    print('Введите корректное имя файла! [.txt]')
-except IndexError:
-    print('Введите от 1 до 25!')
-except ValueError:
-    print('Введите именно число!')
+def question():
+    answer = input('Здравствуйте, вы желаете зашифровать или расшифровать файл? [code] [encode]').lower()
+    try:
+        if answer == 'code':
+            cezar(input('Введите имя шифруемого файла [.txt]'),
+                  int(input('Введите ключ шифровки от 1 до 25')),
+                  input('Введите имя файла с будущим шифром [.txt]'))
+        elif answer == 'encode':
+            uncezar(input('Введите имя зашифрованого файла [.txt]'),
+                    int(input('Введите ключ шифровки от 1 до 25')),
+                    input('Введите имя файла с будущей расшифровкой [.txt]'))
+        else:
+            print('Введиьте корректное название')
+    except FileNotFoundError:
+        print('Введите корректное имя файла! [.txt]')
+    except IndexError:
+        print('Введите от 1 до 25!')
+    except ValueError:
+        print('Введите именно число!')
+
+
+question()
