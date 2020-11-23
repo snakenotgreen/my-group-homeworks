@@ -1,4 +1,5 @@
 import string
+lexicon = chr(32) + string.ascii_letters + string.digits + string.digits + string.punctuation
 
 
 def cezar(codefile, key, newcodefile):
@@ -7,13 +8,20 @@ def cezar(codefile, key, newcodefile):
         for word in text:
             for letter in word:
                 with open(newcodefile, 'a+', encoding='utf-8') as f1:
-                    if letter == chr(32) or letter.isdigit() or letter == ','\
-                            or letter == '.' or letter == '\'' or letter == '\n':
+                    if letter in lexicon:
+                        loc = lexicon.find(letter)
+                        letter = lexicon[loc + key]
+                        f1.write(letter)
+                    elif letter == '\n':
+                        lexicon == '\n'
                         f1.write(letter)
                     else:
-                        loc = string.ascii_letters.find(letter)
-                        new_letter = string.ascii_letters[loc + key]
+                        loc = lexicon.find(letter)
+                        new_letter = lexicon[loc + key]
                         f1.write(new_letter)
+
+
+cezar('users.txt', 2, 'ss.txt')
 
 
 def uncezar(codefile, key, newcodefile):
@@ -22,12 +30,16 @@ def uncezar(codefile, key, newcodefile):
         for word in a:
             for letter in word:
                 with open(newcodefile, 'a+', encoding='utf-8') as f1:
-                    if letter == chr(32) or letter.isdigit() or letter == ','\
-                            or letter == '.' or letter == '\'' or letter == '\n':
+                    if letter in lexicon:
+                        loc = lexicon.find(letter)
+                        letter = lexicon[loc - key]
+                        f1.write(letter)
+                    elif letter == '\n':
+                        lexicon == '\n'
                         f1.write(letter)
                     else:
-                        loc = string.ascii_letters.find(letter)
-                        new_letter = string.ascii_letters[loc - key]
+                        loc = lexicon.find(letter)
+                        new_letter = lexicon[loc - key]
                         f1.write(new_letter)
 
 
