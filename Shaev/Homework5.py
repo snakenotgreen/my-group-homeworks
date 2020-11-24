@@ -1,5 +1,5 @@
 import string
-lexicon = chr(32) + string.ascii_letters + string.digits + string.digits + string.punctuation
+lexicon = chr(32) + string.ascii_letters + string.digits + string.punctuation
 
 
 def cezar(codefile, key, newcodefile):
